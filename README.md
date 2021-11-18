@@ -1,4 +1,4 @@
-Add other users in seed file as same as albert einstine
+Add other users in seed file same as albert einstine
 
 
 
