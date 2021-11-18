@@ -1,8 +1,10 @@
 class Api::UserController < ApplicationController
   skip_before_action :verify_authenticity_token
-  before_action :set_user, only: [:show, :update, :destroy]
+  before_action :set_user, only: [:show, :update, :destroys]
+
 
   def index
+    binding.pry
     @users = User.paginate(page: params[:page], per_page: 3)
     render json: {status: 200, users: @users}
   end
@@ -27,8 +29,11 @@ class Api::UserController < ApplicationController
   end
 
   def typeahead
-    @users = User.where('lower(firstName) LIKE ? OR lower (lastName) LIKE ? OR lower (email) LIKE ?', "%#{params[:input]}%", "%
-    #{params[:input]}%", "%#{params[:input]}%" )
+    @users = User.where(
+            "lower(firstName) LIKE ? OR lower(lastName) LIKE ? OR lower(email) LIKE ?",
+            "%#{params[:input]}%", "%#{params[:input]}%", "%#{params[:input]}%"
+            )
+            #@users = User.where('lower(firstname) LIKE :input OR lower(lastname) LIKE :input OR lower(email) LIKE :input', input: "%#{params[:input]}%")
     render json: {status: 200, users: @users}
   end
 
