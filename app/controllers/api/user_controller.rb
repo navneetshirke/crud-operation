@@ -4,7 +4,6 @@ class Api::UserController < ApplicationController
 
 
   def index
-    binding.pry
     @users = User.paginate(page: params[:page], per_page: 3)
     render json: {status: 200, users: @users}
   end
