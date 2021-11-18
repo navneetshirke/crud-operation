@@ -1,3 +1,7 @@
+Add other users in seed file as same as albert einstine
+
+
+
 index = curl -X GET http://localhost:3000/api/users
 show = curl -X GET http://localhost:3000/api/user/1
 destroy = curl -X DELETE http://localhost:3000/api/user/1
